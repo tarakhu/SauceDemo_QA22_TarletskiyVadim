@@ -15,11 +15,11 @@ public abstract class BaseTest {
     protected WebDriver driver;
     protected LoginPage loginPage;
     protected ProductsPage productsPage;
+    protected ItemLargeSizePage itemLargeSizePage;
     protected CartPage cartPage;
     protected CheckoutStepOnePage checkoutStepOnePage;
     protected CheckoutStepTwoPage checkoutStepTwoPage;
     protected CheckoutCompletePage checkoutCompletePage;
-    protected ItemLargeSizePage itemLargeSizePage;
 
     @BeforeClass(alwaysRun = true)
     @Parameters({"browser"})
@@ -38,11 +38,11 @@ public abstract class BaseTest {
 
             loginPage = new LoginPage(driver);
             productsPage = new ProductsPage(driver);
+            itemLargeSizePage = new ItemLargeSizePage(driver);
             cartPage = new CartPage(driver);
             checkoutStepOnePage = new CheckoutStepOnePage(driver);
             checkoutStepTwoPage = new CheckoutStepTwoPage(driver);
             checkoutCompletePage = new CheckoutCompletePage(driver);
-            itemLargeSizePage = new ItemLargeSizePage(driver);
         }
 
     @BeforeMethod(alwaysRun = true)

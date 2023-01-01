@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84d5edfa-54e6-4f91-a351-05eb56054649" name="Changes" comment="dz">
-      <change afterPath="$PROJECT_DIR$/src/test/java/Pages/ItemLargeSizePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Tests/LargeSizeItemTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Tests/TotalPriceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/regressionTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/regressionTests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Pages/CheckoutStepTwoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/CheckoutStepTwoPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Pages/ItemLargeSizePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/ItemLargeSizePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Pages/ProductsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/ProductsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Tests/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/BaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/CheckOutTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/CheckOutTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/SortByNameZ_ATest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/SortingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/LargeSizeItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/LargeSizeItemTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +98,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortingTest" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="RemoveButtonTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="SauceDemo_QA22_TarletskiyVadim" />
       <extension name="coverage">
         <pattern>
@@ -111,7 +107,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.SortingTest" />
+      <option name="MAIN_CLASS_NAME" value="Tests.RemoveButtonTest" />
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
@@ -140,9 +136,9 @@
       <list>
         <item itemvalue="TestNG.LargeSizeItemTest" />
         <item itemvalue="TestNG.CheckOutTest" />
+        <item itemvalue="TestNG.RemoveButtonTest" />
         <item itemvalue="TestNG.D:/firstProject/SauceDemo_QA22_TarletskiyVadim/smokeTests.xml" />
         <item itemvalue="TestNG.TotalPriceTest" />
-        <item itemvalue="TestNG.SortingTest" />
       </list>
     </recent_temporary>
   </component>
@@ -183,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672425749117</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="dz">
+      <created>1672567289900</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672567289900</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

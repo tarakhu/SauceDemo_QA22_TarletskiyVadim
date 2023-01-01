@@ -34,9 +34,9 @@ public class LargeSizeItemTest extends BaseTest {
 
         productsPage.clickLargeSizeItemPage(testItemName);
 
-        Assert.assertEquals(itemLargeSizePage.itemName, testItemName);
-        Assert.assertEquals(itemLargeSizePage.itemPrice, expectedItemPrice);
-        Assert.assertEquals(itemLargeSizePage.itemDesc, expectedItemDescription);
+        Assert.assertEquals(itemLargeSizePage.getItemName(), testItemName);
+        Assert.assertEquals(itemLargeSizePage.getItemPrice(), expectedItemPrice);
+        Assert.assertEquals(itemLargeSizePage.getItemDesc(), expectedItemDescription);
 
     }
 }

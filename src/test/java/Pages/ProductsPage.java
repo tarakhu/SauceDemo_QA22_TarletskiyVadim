@@ -19,7 +19,7 @@ public class ProductsPage extends BasePage {
     private final static By MENU_BUTTON = By.id("react-burger-menu-btn");
     private final static By LOGOUT_BUTTON = By.id("logout_sidebar_link");
     private final static By PRODUCT_SORT_CONTAINER = By.xpath("//select[@class='product_sort_container']");
-    private final static By LARGE_SIZE_BUTTON_CONTAINER = By.xpath("//div[@class='inventory_item_name']");
+    private final static By LARGE_SIZE_BUTTON_CONTAINER = By.xpath(".//a");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
