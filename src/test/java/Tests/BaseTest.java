@@ -19,6 +19,7 @@ public abstract class BaseTest {
     protected CheckoutStepOnePage checkoutStepOnePage;
     protected CheckoutStepTwoPage checkoutStepTwoPage;
     protected CheckoutCompletePage checkoutCompletePage;
+    protected ItemLargeSizePage itemLargeSizePage;
 
     @BeforeClass(alwaysRun = true)
     @Parameters({"browser"})
@@ -41,6 +42,7 @@ public abstract class BaseTest {
             checkoutStepOnePage = new CheckoutStepOnePage(driver);
             checkoutStepTwoPage = new CheckoutStepTwoPage(driver);
             checkoutCompletePage = new CheckoutCompletePage(driver);
+            itemLargeSizePage = new ItemLargeSizePage(driver);
         }
 
     @BeforeMethod(alwaysRun = true)

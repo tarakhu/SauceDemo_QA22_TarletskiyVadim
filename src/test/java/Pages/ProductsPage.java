@@ -1,10 +1,13 @@
 package Pages;
 
-import Pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.DataProvider;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductsPage extends BasePage {
 
@@ -16,6 +19,7 @@ public class ProductsPage extends BasePage {
     private final static By MENU_BUTTON = By.id("react-burger-menu-btn");
     private final static By LOGOUT_BUTTON = By.id("logout_sidebar_link");
     private final static By PRODUCT_SORT_CONTAINER = By.xpath("//select[@class='product_sort_container']");
+    private final static By LARGE_SIZE_BUTTON_CONTAINER = By.xpath("//div[@class='inventory_item_name']");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -30,7 +34,26 @@ public class ProductsPage extends BasePage {
         return true;
     }
 
-//    public void productSortContainer
+    public void clickLargeSizeItemPage(String itemName) {
+        driver.findElement(getItemContainerByName(itemName)).findElement(LARGE_SIZE_BUTTON_CONTAINER).click();
+    }
+
+    public List<WebElement> getActualNamesElements() {
+        return driver.findElements(By.xpath("//div[@class='inventory_item_name']"));
+    }
+
+    public List<String> getProductNames() {
+        List<String> actualItemNames = new ArrayList<>();
+        for (WebElement x : getActualNamesElements()) {
+            actualItemNames.add(x.getText());
+        }
+        return actualItemNames;
+    }
+
+    public void selectSortingOption(String sortByValue) {
+        Select select = new Select(driver.findElement(By.tagName("select")));
+        select.selectByValue(sortByValue);
+    }
 
     public void logoutButtonClick() {
         driver.findElement(LOGOUT_BUTTON).click();

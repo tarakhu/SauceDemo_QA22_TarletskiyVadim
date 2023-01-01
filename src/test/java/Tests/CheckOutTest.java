@@ -16,7 +16,7 @@ public class CheckOutTest extends BaseTest {
     }
 
     @Test(dataProvider = "productTest", groups = {"smoke"})
-    public void negativeCheckoutStepOneTest(String firstName, String lastName, String postCode) {
+    public void chechkoutTest(String firstName, String lastName, String postCode) {
         loginPage.setUsername("standard_user");
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();

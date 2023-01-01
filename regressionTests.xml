@@ -6,6 +6,7 @@
         <groups>
             <run>
                 <include name="regression"/>
+                <exclude name=""></exclude>
             </run>
         </groups>
         <packages>
