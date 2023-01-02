@@ -6,10 +6,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(TestListener.class)
 public class LoginTest extends BaseTest {
 
-    @Test(groups = "smoke", description = "позитивный тест на логин")
+    @Test(groups = {"smoke"}, description = "позитивный тест на логин")
     public void positiveLoginTest() {
         loginPage.setUsername("standard_user");
         loginPage.setPassword("secret_sauce");

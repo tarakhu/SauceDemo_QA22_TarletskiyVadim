@@ -5,7 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(TestListener.class)
 public class LogoutTest extends BaseTest {
 
     @Test(groups = {"regression"}, description = "логаут тест")

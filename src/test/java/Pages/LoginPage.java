@@ -1,6 +1,7 @@
 package Pages;
 
 import Pages.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -37,6 +38,7 @@ public class LoginPage extends BasePage {
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
     }
 
+    @Step("Get error message")
     public String getErrorMessageText()  {
         return driver.findElement(ERROR_MESSAGE_CONTAINER).getText();
     }

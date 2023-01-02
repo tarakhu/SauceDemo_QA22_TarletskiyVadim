@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class NegativeCheckoutStepOneTest extends BaseTest {
+public class CheckoutStepOneTest extends BaseTest {
 
     String itemName = "Sauce Labs Backpack";
 
@@ -36,6 +36,27 @@ public class NegativeCheckoutStepOneTest extends BaseTest {
         checkoutStepOnePage.continueButtonClick();
 
         Assert.assertEquals(errorMessage, checkoutStepOnePage.getErrorMessage());
+    }
+
+    @Test(groups = {"smoke"}, description = "позитивный тест ввода данных покупателя")
+    public void positiveCheckoutStepOneTest() {
+        loginPage.setUsername("standard_user");
+        loginPage.setPassword("secret_sauce");
+        loginPage.clickLoginButton();
+
+        productsPage.clickAddToCartButton(itemName);
+
+        productsPage.clickShoppingCartButton();
+
+        cartPage.checkoutButtonClick();
+
+        checkoutStepOnePage.setFirstName("firstName");
+        checkoutStepOnePage.setLastName("lastName");
+        checkoutStepOnePage.setPostalCode("12345");
+
+        checkoutStepOnePage.continueButtonClick();
+
+        Assert.assertTrue(checkoutStepTwoPage.isFinishButtonDisplayed());
     }
 
 

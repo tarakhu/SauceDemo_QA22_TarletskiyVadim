@@ -1,5 +1,6 @@
 package Pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -19,6 +20,7 @@ public class CheckoutStepOnePage extends BasePage {
         driver.findElement(CONTINUE_BUTTON_LOCATOR).click();
     }
 
+    @Step("Get error message")
     public String getErrorMessage() {
         return driver.findElement(ERROR_TEXT_LOCATOR).getText();
     }
@@ -34,7 +36,4 @@ public class CheckoutStepOnePage extends BasePage {
     public void setPostalCode(String postalCode)   {
         driver.findElement(POSTAL_CODE_LOCATOR).sendKeys(postalCode);
     }
-
-
-
 }

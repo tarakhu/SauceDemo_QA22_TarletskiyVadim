@@ -5,6 +5,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 
@@ -23,7 +24,7 @@ public abstract class BaseTest {
 
     @BeforeClass(alwaysRun = true)
     @Parameters({"browser"})
-    public void setUp(@Optional("chrome") String browser) {
+    public void setUp(@Optional("chrome") String browser, ITestContext testContext) {
 
         if (browser.equals("chrome")) {
             WebDriverManager.chromedriver().setup();
@@ -35,6 +36,8 @@ public abstract class BaseTest {
 
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+            testContext.setAttribute("driver", driver);
 
             loginPage = new LoginPage(driver);
             productsPage = new ProductsPage(driver);

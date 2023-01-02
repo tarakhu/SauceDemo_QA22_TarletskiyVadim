@@ -1,5 +1,6 @@
 package Pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -42,6 +43,7 @@ public class ProductsPage extends BasePage {
         return driver.findElements(By.xpath("//div[@class='inventory_item_name']"));
     }
 
+    @Step("Get actual collection names on page")
     public List<String> getProductNames() {
         List<String> actualItemNames = new ArrayList<>();
         for (WebElement x : getActualNamesElements()) {
@@ -50,6 +52,7 @@ public class ProductsPage extends BasePage {
         return actualItemNames;
     }
 
+    @Step("Sorting")
     public void selectSortingOption(String sortByValue) {
         Select select = new Select(driver.findElement(By.tagName("select")));
         select.selectByValue(sortByValue);

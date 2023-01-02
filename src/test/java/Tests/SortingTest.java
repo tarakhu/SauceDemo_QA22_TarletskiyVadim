@@ -2,13 +2,11 @@ package Tests;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Listeners(TestListener.class)
 public class SortingTest extends BaseTest {
 
     @DataProvider()
@@ -24,7 +22,7 @@ public class SortingTest extends BaseTest {
         };
     }
 
-    @Test(dataProvider = "sorting", retryAnalyzer = Retry.class, groups = "regression", description = "тест сортировки вещей на странице")
+    @Test(dataProvider = "sorting", retryAnalyzer = Retry.class, groups = {"regression"}, description = "тест сортировки вещей на странице")
     public void productsTest(String sortByValue, List<String> itemNames)  {
 
         loginPage.setUsername("standard_user");

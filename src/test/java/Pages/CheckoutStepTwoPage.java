@@ -1,5 +1,6 @@
 package Pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -37,6 +38,7 @@ public class CheckoutStepTwoPage extends BasePage{
         return tax;
     }
 
+    @Step("Actual item total price")
     public double actualItemTotal() {
         String itemTotalFull = driver.findElement(SUMMARY_TOTAL_LABEL_LOCATOR).getText();
         String itemTotalString = itemTotalFull.substring(8);
@@ -44,10 +46,9 @@ public class CheckoutStepTwoPage extends BasePage{
         return actualTotal;
     }
 
+    @Step("Expected item total price")
     public double expectedItemTotal() {
         double expectedTotal = itemSubtotal() + itemTax();
         return expectedTotal;
     }
-
-
 }

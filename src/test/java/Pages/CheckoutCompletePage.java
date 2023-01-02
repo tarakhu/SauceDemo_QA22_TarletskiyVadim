@@ -1,5 +1,6 @@
 package Pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -9,10 +10,11 @@ public class CheckoutCompletePage extends BasePage{
         super(driver);
     }
 
-    private static final By PONY_EXPRESS_IMG_LOCATOR = By.xpath("//img[@class='pony_express']");
+    private static final By COMPLETE_LOCATOR = By.xpath("//h2[@class='complete-header']");
 
-    public boolean isPonyExpressImgDisplayed() {
-        return driver.findElement(PONY_EXPRESS_IMG_LOCATOR).isDisplayed();
+    @Step("Complete message check")
+    public boolean isCompleteMessageDisplayed() {
+        return driver.findElement(COMPLETE_LOCATOR).isDisplayed();
     }
 
 }

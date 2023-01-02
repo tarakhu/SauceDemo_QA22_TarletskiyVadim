@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(TestListener.class)
 public class RemoveButtonTest extends BaseTest {
 
     String itemName = "Sauce Labs Backpack";
@@ -25,6 +24,4 @@ public class RemoveButtonTest extends BaseTest {
         Assert.assertFalse(cartPage.isItemDescriptionDisplayed(itemName));
 
     }
-
-
 }
