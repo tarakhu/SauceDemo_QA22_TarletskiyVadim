@@ -1,5 +1,7 @@
 package Tests;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -25,14 +27,13 @@ public class LargeSizeItemTest extends BaseTest {
         };
     }
 
-
+    @Description("Test about large size item page")
     @Test(dataProvider = "productTest", groups = {"regression"})
     public void largeSizeItemTest(String testItemName, String expectedItemPrice, String expectedItemDescription) {
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
-
-        productsPage.clickLargeSizeItemPage(testItemName);
+        loginPage.setUsername("standard_user")
+                .setPassword("secret_sauce")
+                .clickLoginButton()
+                .clickLargeSizeItemPage(testItemName);
 
         Assert.assertEquals(itemLargeSizePage.getItemName(), testItemName);
         Assert.assertEquals(itemLargeSizePage.getItemPrice(), expectedItemPrice);

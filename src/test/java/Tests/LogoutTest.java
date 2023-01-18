@@ -9,13 +9,12 @@ public class LogoutTest extends BaseTest {
 
     @Test(groups = {"regression"}, description = "логаут тест")
     public void positiveLogOutTest() {
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
 
-        productsPage.menuButtonClick();
-
-        productsPage.logoutButtonClick();
+        loginPage.setUsername("standard_user")
+                .setPassword("secret_sauce")
+                .clickLoginButton()
+                .menuButtonClick()
+                .logoutButtonClick();
 
         Assert.assertEquals(loginPage.isUserNameButtonPresent(), true);
 

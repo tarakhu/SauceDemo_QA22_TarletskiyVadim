@@ -31,9 +31,10 @@ public class ProductTests extends BaseTest {
     @Test(dataProvider = "productTest", retryAnalyzer = Retry.class, groups = {"smoke"})
     public void productsTest(String testItemName, String expectedItemPrice, String expectedItemDescription) {
 
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
+        loginPage.setUsername("standard_user")
+                .setPassword("secret_sauce")
+                .clickLoginButton();
+
         Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
 
         Assert.assertEquals(productsPage.getItemPrice(testItemName), expectedItemPrice);

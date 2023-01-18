@@ -3,11 +3,15 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CartPage extends BasePage {
 
     public CartPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver,this);
     }
 
     private final static String ITEM_CONTAINER_LOCATOR = "//div[@class='inventory_item_name' and text()='%s']/ancestor::div[@class='cart_item_label']";
@@ -15,10 +19,16 @@ public class CartPage extends BasePage {
     private final static By ITEM_PRICE_LOCATOR = By.xpath(".//div[@class='inventory_item_price']");
     private final static By ITEM_DESCRIPTION_LOCATOR = By.xpath(".//div[@class ='inventory_item_desc']");
     private final static String ITEM_REMOVE_LOCATOR = "//button[@id='remove-%s']";
-    private final static By CHECKOUT_BUTTON_LOCATOR = By.xpath("//button[@id ='checkout']");
+    @FindBy(xpath = "//button[@id ='checkout']")
+    private WebElement checkoutButtonLocator;
 
-    public void checkoutButtonClick() {
-        driver.findElement(CHECKOUT_BUTTON_LOCATOR).click();
+    public boolean isPageOpened() {
+        return checkoutButtonLocator.isDisplayed();
+    }
+
+    public CheckoutStepOnePage checkoutButtonClick() {
+        checkoutButtonLocator.click();
+        return new CheckoutStepOnePage(driver);
     }
 
     public String getItemPrice(String itemName) {

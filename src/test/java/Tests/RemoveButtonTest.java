@@ -11,11 +11,10 @@ public class RemoveButtonTest extends BaseTest {
     @Test(retryAnalyzer = Retry.class, groups = {"regression"}, description = "проверка работоспособности кнопки ремува")
     public void removeButtonTest() {
 
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
-
-        productsPage.clickAddToCartButton(itemName);
+        loginPage.setUsername("standard_user")
+                .setPassword("secret_sauce")
+                .clickLoginButton()
+                .clickAddToCartButton(itemName);
 
         productsPage.clickShoppingCartButton();
 

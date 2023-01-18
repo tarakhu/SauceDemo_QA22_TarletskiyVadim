@@ -3,36 +3,48 @@ package Pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CheckoutStepTwoPage extends BasePage{
 
+    @FindBy(id = "finish")
+    private WebElement finishButtonLocator;
+    @FindBy(xpath = "//div[@class='summary_subtotal_label']")
+    private WebElement summarySubtotalLabelLocator;
+    @FindBy(xpath = "//div[@class='summary_tax_label']")
+    private WebElement summaryTaxLabelLocator;
+    @FindBy(xpath = "//div[@class='summary_total_label']")
+    private WebElement summaryTotalLabelLocator;
+
+    public boolean isPageOpened() {
+        return finishButtonLocator.isDisplayed();
+    }
+
     public CheckoutStepTwoPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver,this);
     }
-
-    private static final By FINISH_BUTTON_LOCATOR = By.id("finish");
-    private static final By SUMMARY_SUBTOTAL_LABEL_LOCATOR = By.xpath("//div[@class='summary_subtotal_label']");
-    private static final By SUMMARY_TAX_LABEL_LOCATOR = By.xpath("//div[@class='summary_tax_label']");
-    private static final By SUMMARY_TOTAL_LABEL_LOCATOR = By.xpath("//div[@class='summary_total_label']");
-
 
     public boolean isFinishButtonDisplayed() {
-            return driver.findElement(FINISH_BUTTON_LOCATOR).isDisplayed();
+            return finishButtonLocator.isDisplayed();
     }
 
-    public void finishButtonClick() {
-        driver.findElement(FINISH_BUTTON_LOCATOR).click();
+    public CheckoutCompletePage finishButtonClick() {
+        finishButtonLocator.click();
+        return new CheckoutCompletePage(driver);
     }
 
     public double itemSubtotal() {
-        String subtotalFull = driver.findElement(SUMMARY_SUBTOTAL_LABEL_LOCATOR).getText();
+        String subtotalFull = summarySubtotalLabelLocator.getText();
         String subtotalString = subtotalFull.substring(13);
         double subtotal = Double.parseDouble(subtotalString);
         return subtotal;
     }
 
     public double itemTax() {
-        String taxFull = driver.findElement(SUMMARY_TAX_LABEL_LOCATOR).getText();
+        String taxFull = summaryTaxLabelLocator.getText();
         String taxString = taxFull.substring(6);
         double tax = Double.parseDouble(taxString);
         return tax;
@@ -40,7 +52,7 @@ public class CheckoutStepTwoPage extends BasePage{
 
     @Step("Actual item total price")
     public double actualItemTotal() {
-        String itemTotalFull = driver.findElement(SUMMARY_TOTAL_LABEL_LOCATOR).getText();
+        String itemTotalFull = summaryTotalLabelLocator.getText();
         String itemTotalString = itemTotalFull.substring(8);
         double actualTotal = Double.parseDouble(itemTotalString);
         return actualTotal;

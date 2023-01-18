@@ -1,17 +1,31 @@
 package Pages;
 
-import Pages.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
 
     private final static By USERNAME_INPUT_LOCATOR = By.cssSelector("#user-name");
-    private final static By PASSWORD_INPUT = By.cssSelector("#password");
-    private final static By LOGIN_BUTTON = By.cssSelector("#login-button");
-    private final static By ERROR_MESSAGE_CONTAINER = By.cssSelector(".error-message-container");
+    @FindBy(css = "#password")
+    private WebElement passwordInput;
+    @FindBy(css = "#login-button")
+    private WebElement loginButton;
+    @FindBy(css = ".error-message-container")
+    private WebElement errorMessageContainer;
+
+    public boolean isPageOpened() {
+        return loginButton.isDisplayed();
+    }
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver,this);
+    }
 
     public boolean isUserNameButtonPresent() {
         try {
@@ -22,24 +36,23 @@ public class LoginPage extends BasePage {
         return true;
     }
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public ProductsPage clickLoginButton()  {
+        loginButton.click();
+        return new ProductsPage(driver);
     }
 
-    public void clickLoginButton()  {
-        driver.findElement(LOGIN_BUTTON).click();
-    }
-
-    public void setUsername(String username)   {
+    public LoginPage setUsername(String username)   {
         driver.findElement(USERNAME_INPUT_LOCATOR).sendKeys(username);
+        return this;
     }
 
-    public void setPassword(String password)    {
-        driver.findElement(PASSWORD_INPUT).sendKeys(password);
+    public LoginPage setPassword(String password)    {
+        passwordInput.sendKeys(password);
+        return this;
     }
 
     @Step("Get error message")
     public String getErrorMessageText()  {
-        return driver.findElement(ERROR_MESSAGE_CONTAINER).getText();
+        return errorMessageContainer.getText();
     }
 }

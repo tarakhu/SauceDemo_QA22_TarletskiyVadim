@@ -23,13 +23,12 @@ public class SortingTest extends BaseTest {
     }
 
     @Test(dataProvider = "sorting", retryAnalyzer = Retry.class, groups = {"regression"}, description = "тест сортировки вещей на странице")
-    public void productsTest(String sortByValue, List<String> itemNames)  {
+    public void sortingTest(String sortByValue, List<String> itemNames)  {
 
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
-
-        productsPage.selectSortingOption(sortByValue);
+        loginPage.setUsername("standard_user")
+                .setPassword("secret_sauce")
+                .clickLoginButton()
+                .selectSortingOption(sortByValue);
 
         Assert.assertEquals(productsPage.getProductNames(), itemNames);
 

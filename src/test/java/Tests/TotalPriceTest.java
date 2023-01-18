@@ -5,27 +5,26 @@ import org.testng.annotations.Test;
 
 public class TotalPriceTest extends BaseTest {
 
-    String itemName1 = "Sauce Labs Backpack";
-    String itemName2 = "Sauce Labs Fleece Jacket";
+    String itemNameOne = "Sauce Labs Backpack";
+    String itemNameTwo = "Sauce Labs Fleece Jacket";
 
     @Test(groups = {"smoke"}, description = "проверка расчета итоговой суммы покупки")
     public void totalPriceTest() {
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
+        loginPage.setUsername("standard_user")
+                .setPassword("secret_sauce")
+                .clickLoginButton()
+                .clickAddToCartButton(itemNameOne);
 
-        productsPage.clickAddToCartButton(itemName1);
-        productsPage.clickAddToCartButton(itemName2);
+        productsPage.clickAddToCartButton(itemNameTwo);
 
         productsPage.clickShoppingCartButton();
 
         cartPage.checkoutButtonClick();
 
-        checkoutStepOnePage.setFirstName("firstName");
-        checkoutStepOnePage.setLastName("lastName");
-        checkoutStepOnePage.setPostalCode("12345");
-
-        checkoutStepOnePage.continueButtonClick();
+        checkoutStepOnePage.setFirstName("firstName")
+                .setLastName("lastName")
+                .setPostalCode("12345")
+                .continueButtonClick();
 
         Assert.assertEquals(checkoutStepTwoPage.actualItemTotal(), checkoutStepTwoPage.expectedItemTotal());
     }

@@ -10,18 +10,22 @@ public class LoginTest extends BaseTest {
 
     @Test(groups = {"smoke"}, description = "позитивный тест на логин")
     public void positiveLoginTest() {
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
+
+        loginPage.setUsername("standard_user")
+                .setPassword("secret_sauce")
+                .clickLoginButton();
+
         Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
     }
 
     @Test(retryAnalyzer = Retry.class, dataProvider = "negativeLoginTestData", groups = {"regression"}, description = "негативный " +
                                         "логин тест")
     public void negativeLoginTest(String username, String password, String errorMessage) {
-        loginPage.setUsername(username);
-        loginPage.setPassword(password);
-        loginPage.clickLoginButton();
+
+        loginPage.setUsername(username)
+                .setPassword(password)
+                .clickLoginButton();
+
         Assert.assertEquals(loginPage.getErrorMessageText(), errorMessage);
     }
 

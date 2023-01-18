@@ -3,37 +3,55 @@ package Pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CheckoutStepOnePage extends BasePage {
 
-    public CheckoutStepOnePage(WebDriver driver) {
-        super(driver);
+
+    @FindBy(id = "first-name")
+    private WebElement firstNameFieldLocator;
+    @FindBy(id = "last-name")
+    private WebElement lastNameFieldLocator;
+    @FindBy(id = "postal-code")
+    private WebElement postalCodeLocator;
+    @FindBy(css = "#continue")
+    private WebElement continueButtonLocator;
+    @FindBy(xpath = "//div[@class='error-message-container error']")
+    private WebElement errorTextLocator;
+
+    public boolean isPageOpened() {
+        return firstNameFieldLocator.isDisplayed();
     }
 
-    public static final By FIRST_NAME_FIELD_LOCATOR = By.id("first-name");
-    public static final By LAST_NAME_FIELD_LOCATOR = By.id("last-name");
-    public static final By POSTAL_CODE_LOCATOR = By.id("postal-code");
-    public static final By CONTINUE_BUTTON_LOCATOR = By.cssSelector("#continue");
-    public static final By ERROR_TEXT_LOCATOR = By.xpath("//div[@class='error-message-container error']");
+    public CheckoutStepOnePage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver,this);
+    }
 
-    public void continueButtonClick() {
-        driver.findElement(CONTINUE_BUTTON_LOCATOR).click();
+    public CheckoutStepTwoPage continueButtonClick() {
+        continueButtonLocator.click();
+        return new CheckoutStepTwoPage(driver);
     }
 
     @Step("Get error message")
     public String getErrorMessage() {
-        return driver.findElement(ERROR_TEXT_LOCATOR).getText();
+        return errorTextLocator.getText();
     }
 
-    public void setFirstName(String firstName)   {
-        driver.findElement(FIRST_NAME_FIELD_LOCATOR).sendKeys(firstName);
+    public CheckoutStepOnePage setFirstName(String firstName)   {
+        firstNameFieldLocator.sendKeys(firstName);
+        return this;
     }
 
-    public void setLastName(String lastName)   {
-        driver.findElement(LAST_NAME_FIELD_LOCATOR).sendKeys(lastName);
+    public CheckoutStepOnePage setLastName(String lastName)   {
+        lastNameFieldLocator.sendKeys(lastName);
+        return this;
     }
 
-    public void setPostalCode(String postalCode)   {
-        driver.findElement(POSTAL_CODE_LOCATOR).sendKeys(postalCode);
+    public CheckoutStepOnePage setPostalCode(String postalCode)   {
+        postalCodeLocator.sendKeys(postalCode);
+        return this;
     }
 }
