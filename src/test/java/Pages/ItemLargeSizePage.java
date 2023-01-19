@@ -12,14 +12,13 @@ public class ItemLargeSizePage extends BasePage {
 
     @FindBy(xpath = "//div[@class='inventory_details_name large_size']")
     private WebElement largeSizeNameLocator;
-    @FindBy(xpath = "//div[@class='inventory_details_name large_size']")
+    @FindBy(xpath = "//div[@class='inventory_details_desc large_size']")
     private WebElement largeSizeDescLocator;
-    @FindBy(xpath = "//div[@class='inventory_details_name large_size']")
+    @FindBy(xpath = "//div[@class='inventory_details_price']")
     private WebElement largeSizePriceLocator;
 
     public ItemLargeSizePage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver,this);
     }
 
     public boolean isPageOpened() {

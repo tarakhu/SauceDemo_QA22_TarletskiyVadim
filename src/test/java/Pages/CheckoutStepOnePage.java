@@ -27,7 +27,6 @@ public class CheckoutStepOnePage extends BasePage {
 
     public CheckoutStepOnePage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver,this);
     }
 
     public CheckoutStepTwoPage continueButtonClick() {

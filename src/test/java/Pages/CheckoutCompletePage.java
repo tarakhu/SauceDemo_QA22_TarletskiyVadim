@@ -23,6 +23,5 @@ public class CheckoutCompletePage extends BasePage{
 
     public CheckoutCompletePage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver,this);
     }
 }

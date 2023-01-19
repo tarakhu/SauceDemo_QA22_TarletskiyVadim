@@ -9,11 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CartPage extends BasePage {
 
-    public CartPage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver,this);
-    }
-
     private final static String ITEM_CONTAINER_LOCATOR = "//div[@class='inventory_item_name' and text()='%s']/ancestor::div[@class='cart_item_label']";
     private final static By ITEM_NAME_LOCATOR = By.xpath(".//div[@class='inventory_item_name']");
     private final static By ITEM_PRICE_LOCATOR = By.xpath(".//div[@class='inventory_item_price']");
@@ -21,6 +16,10 @@ public class CartPage extends BasePage {
     private final static String ITEM_REMOVE_LOCATOR = "//button[@id='remove-%s']";
     @FindBy(xpath = "//button[@id ='checkout']")
     private WebElement checkoutButtonLocator;
+
+    public CartPage(WebDriver driver) {
+        super(driver);
+    }
 
     public boolean isPageOpened() {
         return checkoutButtonLocator.isDisplayed();

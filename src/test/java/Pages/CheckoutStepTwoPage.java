@@ -24,7 +24,6 @@ public class CheckoutStepTwoPage extends BasePage{
 
     public CheckoutStepTwoPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver,this);
     }
 
     public boolean isFinishButtonDisplayed() {
