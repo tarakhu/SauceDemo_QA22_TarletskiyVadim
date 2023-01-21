@@ -35,7 +35,7 @@ public class ProductTests extends BaseTest {
                 .setPassword("secret_sauce")
                 .clickLoginButton();
 
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
 
         Assert.assertEquals(productsPage.getItemPrice(testItemName), expectedItemPrice);
         Assert.assertEquals(productsPage.getItemDescription(testItemName), expectedItemDescription);

@@ -21,17 +21,8 @@ public class ProductsPage extends BasePage {
     private final static By LARGE_SIZE_BUTTON_CONTAINER = By.xpath(".//a");
     private final static By MENU_BUTTON = By.id("react-burger-menu-btn");
     private final static By LOGOUT_BUTTON = By.id("logout_sidebar_link");
-    private final static By PRODUCT_SORT_CONTAINER = By.xpath("//select[@class='product_sort_container']");
 
     public boolean isPageOpened() {
-        return driver.findElement(SHOPPING_CART_BUTTON).isDisplayed();
-    }
-
-    public ProductsPage(WebDriver driver) {
-        super(driver);
-    }
-
-    public boolean isShoppingCartButtonPresent() {
         try {
             driver.findElement(SHOPPING_CART_BUTTON);
         } catch (NoSuchElementException ex) {
@@ -40,6 +31,11 @@ public class ProductsPage extends BasePage {
         return true;
     }
 
+    public ProductsPage(WebDriver driver) {
+        super(driver);
+    }
+
+    @Step("Click to item, for look large size page")
     public ItemLargeSizePage clickLargeSizeItemPage(String itemName) {
         logger.info(String.format("Click to large size item %s page", itemName));
         driver.findElement(getItemContainerByName(itemName)).findElement(LARGE_SIZE_BUTTON_CONTAINER).click();
@@ -56,6 +52,7 @@ public class ProductsPage extends BasePage {
         for (WebElement x : getActualNamesElements()) {
             actualItemNames.add(x.getText());
         }
+        logger.info("Actual list of items - ", actualItemNames);
         return actualItemNames;
     }
 
@@ -67,21 +64,26 @@ public class ProductsPage extends BasePage {
         return this;
     }
 
+    @Step("Click to logout button")
     public LoginPage logoutButtonClick() {
         logger.info("Click logout button");
         driver.findElement(LOGOUT_BUTTON).click();
         return new LoginPage(driver);
     }
 
+    @Step("Click to menu button")
     public ProductsPage menuButtonClick() {
-        logger.debug("Click to menu button");
+        logger.info("Click to menu button");
         driver.findElement(MENU_BUTTON).click();
         return this;
     }
+
+    @Step("Click to shopping cart button")
     public void clickShoppingCartButton() {
-        logger.debug("Click shopping cart button");
+        logger.debug("Click to shopping cart button");
         driver.findElement(SHOPPING_CART_BUTTON).click();
     }
+
     public String getItemPrice(String itemName) {
         return driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_PRICE_LOCATOR).getText();
     }
@@ -90,12 +92,9 @@ public class ProductsPage extends BasePage {
         return driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_DESCRIPTION_LOCATOR).getText();
     }
 
+    @Step("Add some item to cart")
     public void clickAddToCartButton(String itemName) {
         logger.info(String.format("Add to cart button %s item", itemName));
-        driver.findElement(getItemContainerByName(itemName)).findElement(ADD_TO_CART_BUTTON).click();
-    }
-
-    public void openItem(String itemName) {
         driver.findElement(getItemContainerByName(itemName)).findElement(ADD_TO_CART_BUTTON).click();
     }
 

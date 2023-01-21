@@ -13,10 +13,6 @@ public class CheckoutCompletePage extends BasePage{
     private WebElement completeLocator;
 
     @Step("Complete message check")
-    public boolean isCompleteMessageDisplayed() {
-        return completeLocator.isDisplayed();
-    }
-
     public boolean isPageOpened() {
         return completeLocator.isDisplayed();
     }

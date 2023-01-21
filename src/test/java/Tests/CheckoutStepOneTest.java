@@ -51,7 +51,7 @@ public class CheckoutStepOneTest extends BaseTest {
                 .setPostalCode("12345")
                 .continueButtonClick();
 
-        Assert.assertTrue(checkoutStepTwoPage.isFinishButtonDisplayed());
+        Assert.assertTrue(checkoutStepTwoPage.isPageOpened());
     }
 
 

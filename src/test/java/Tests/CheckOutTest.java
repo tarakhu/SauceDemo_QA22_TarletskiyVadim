@@ -25,7 +25,7 @@ public class CheckOutTest extends BaseTest {
                 .continueButtonClick()
                 .finishButtonClick();
 
-        Assert.assertTrue(checkoutCompletePage.isCompleteMessageDisplayed());
+        Assert.assertTrue(checkoutCompletePage.isPageOpened());
 
     }
 }

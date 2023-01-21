@@ -26,10 +26,7 @@ public class CheckoutStepTwoPage extends BasePage{
         super(driver);
     }
 
-    public boolean isFinishButtonDisplayed() {
-            return finishButtonLocator.isDisplayed();
-    }
-
+    @Step("Click to finish button")
     public CheckoutCompletePage finishButtonClick() {
         logger.info("Use click to finish button");
         finishButtonLocator.click();

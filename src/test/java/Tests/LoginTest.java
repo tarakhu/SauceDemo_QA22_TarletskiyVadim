@@ -15,7 +15,7 @@ public class LoginTest extends BaseTest {
                 .setPassword("secret_sauce")
                 .clickLoginButton();
 
-        Assert.assertTrue(productsPage.isShoppingCartButtonPresent());
+        Assert.assertTrue(productsPage.isPageOpened());
     }
 
     @Test(retryAnalyzer = Retry.class, dataProvider = "negativeLoginTestData", groups = {"regression"}, description = "негативный " +

@@ -29,6 +29,7 @@ public class CheckoutStepOnePage extends BasePage {
         super(driver);
     }
 
+    @Step("Click continue button")
     public CheckoutStepTwoPage continueButtonClick() {
         logger.debug("Click to continue button");
         continueButtonLocator.click();
@@ -40,18 +41,21 @@ public class CheckoutStepOnePage extends BasePage {
         return errorTextLocator.getText();
     }
 
+    @Step("Set first name")
     public CheckoutStepOnePage setFirstName(String firstName) {
         logger.debug(String.format("Entered FirstName value -- %s", firstName));
         firstNameFieldLocator.sendKeys(firstName);
         return this;
     }
 
+    @Step("Set last name")
     public CheckoutStepOnePage setLastName(String lastName) {
         logger.debug(String.format("Entered LastName value -- %s", lastName));
         lastNameFieldLocator.sendKeys(lastName);
         return this;
     }
 
+    @Step("Set postal code")
     public CheckoutStepOnePage setPostalCode(String postalCode) {
         logger.debug(String.format("Entered postalcode value -- %s", postalCode));
         postalCodeLocator.sendKeys(postalCode);
