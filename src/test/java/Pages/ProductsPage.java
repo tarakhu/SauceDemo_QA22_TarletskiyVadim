@@ -6,7 +6,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
@@ -20,15 +19,9 @@ public class ProductsPage extends BasePage {
     private final static By ITEM_PRICE_LOCATOR = By.xpath(".//div[@class = 'inventory_item_price']");
     private final static By ITEM_DESCRIPTION_LOCATOR = By.xpath(".//div[@class = 'inventory_item_desc']");
     private final static By LARGE_SIZE_BUTTON_CONTAINER = By.xpath(".//a");
-
-    @FindBy(id = "react-burger-menu-btn")
-    private WebElement menuButton;
-
-    @FindBy(id = "logout_sidebar_link")
-    private WebElement logoutButton;
-
-    @FindBy(xpath = "//select[@class='product_sort_container']")
-    private WebElement productSortContainer;
+    private final static By MENU_BUTTON = By.id("react-burger-menu-btn");
+    private final static By LOGOUT_BUTTON = By.id("logout_sidebar_link");
+    private final static By PRODUCT_SORT_CONTAINER = By.xpath("//select[@class='product_sort_container']");
 
     public boolean isPageOpened() {
         return driver.findElement(SHOPPING_CART_BUTTON).isDisplayed();
@@ -48,6 +41,7 @@ public class ProductsPage extends BasePage {
     }
 
     public ItemLargeSizePage clickLargeSizeItemPage(String itemName) {
+        logger.info(String.format("Click to large size item %s page", itemName));
         driver.findElement(getItemContainerByName(itemName)).findElement(LARGE_SIZE_BUTTON_CONTAINER).click();
         return new ItemLargeSizePage(driver);
     }
@@ -68,20 +62,24 @@ public class ProductsPage extends BasePage {
     @Step("Sorting")
     public ProductsPage selectSortingOption(String sortByValue) {
         Select select = new Select(driver.findElement(By.tagName("select")));
+        logger.debug(String.format("Select sorting option %s", sortByValue));
         select.selectByValue(sortByValue);
         return this;
     }
 
     public LoginPage logoutButtonClick() {
-        logoutButton.click();
+        logger.info("Click logout button");
+        driver.findElement(LOGOUT_BUTTON).click();
         return new LoginPage(driver);
     }
 
     public ProductsPage menuButtonClick() {
-        menuButton.click();
+        logger.debug("Click to menu button");
+        driver.findElement(MENU_BUTTON).click();
         return this;
     }
     public void clickShoppingCartButton() {
+        logger.debug("Click shopping cart button");
         driver.findElement(SHOPPING_CART_BUTTON).click();
     }
     public String getItemPrice(String itemName) {
@@ -93,6 +91,7 @@ public class ProductsPage extends BasePage {
     }
 
     public void clickAddToCartButton(String itemName) {
+        logger.info(String.format("Add to cart button %s item", itemName));
         driver.findElement(getItemContainerByName(itemName)).findElement(ADD_TO_CART_BUTTON).click();
     }
 

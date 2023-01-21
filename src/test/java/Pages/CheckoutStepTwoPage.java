@@ -31,6 +31,7 @@ public class CheckoutStepTwoPage extends BasePage{
     }
 
     public CheckoutCompletePage finishButtonClick() {
+        logger.info("Use click to finish button");
         finishButtonLocator.click();
         return new CheckoutCompletePage(driver);
     }
@@ -59,6 +60,7 @@ public class CheckoutStepTwoPage extends BasePage{
 
     @Step("Expected item total price")
     public double expectedItemTotal() {
+        logger.info(String.format("Calculation for total price subtotal %s + itemtax %s", itemSubtotal(), itemTax()));
         double expectedTotal = itemSubtotal() + itemTax();
         return expectedTotal;
     }

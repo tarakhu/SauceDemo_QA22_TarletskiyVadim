@@ -3,12 +3,13 @@ package Tests;
 import Pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
-
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +23,7 @@ public abstract class BaseTest {
     protected CheckoutStepOnePage checkoutStepOnePage;
     protected CheckoutStepTwoPage checkoutStepTwoPage;
     protected CheckoutCompletePage checkoutCompletePage;
+    protected final Logger logger = LogManager.getLogger(this.getClass().getName());
 
     @BeforeClass(alwaysRun = true)
     @Parameters({"browser"})

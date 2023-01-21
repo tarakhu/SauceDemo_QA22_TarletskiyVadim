@@ -30,6 +30,7 @@ public class CheckoutStepOnePage extends BasePage {
     }
 
     public CheckoutStepTwoPage continueButtonClick() {
+        logger.debug("Click to continue button");
         continueButtonLocator.click();
         return new CheckoutStepTwoPage(driver);
     }
@@ -39,17 +40,20 @@ public class CheckoutStepOnePage extends BasePage {
         return errorTextLocator.getText();
     }
 
-    public CheckoutStepOnePage setFirstName(String firstName)   {
+    public CheckoutStepOnePage setFirstName(String firstName) {
+        logger.debug(String.format("Entered FirstName value -- %s", firstName));
         firstNameFieldLocator.sendKeys(firstName);
         return this;
     }
 
-    public CheckoutStepOnePage setLastName(String lastName)   {
+    public CheckoutStepOnePage setLastName(String lastName) {
+        logger.debug(String.format("Entered LastName value -- %s", lastName));
         lastNameFieldLocator.sendKeys(lastName);
         return this;
     }
 
-    public CheckoutStepOnePage setPostalCode(String postalCode)   {
+    public CheckoutStepOnePage setPostalCode(String postalCode) {
+        logger.debug(String.format("Entered postalcode value -- %s", postalCode));
         postalCodeLocator.sendKeys(postalCode);
         return this;
     }

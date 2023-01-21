@@ -3,9 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class CartPage extends BasePage {
 
@@ -14,19 +12,19 @@ public class CartPage extends BasePage {
     private final static By ITEM_PRICE_LOCATOR = By.xpath(".//div[@class='inventory_item_price']");
     private final static By ITEM_DESCRIPTION_LOCATOR = By.xpath(".//div[@class ='inventory_item_desc']");
     private final static String ITEM_REMOVE_LOCATOR = "//button[@id='remove-%s']";
-    @FindBy(xpath = "//button[@id ='checkout']")
-    private WebElement checkoutButtonLocator;
+    private final static By CHECKOUT_BUTTON_LOCATOR = By.xpath("//button[@id ='checkout']");
 
     public CartPage(WebDriver driver) {
         super(driver);
     }
 
     public boolean isPageOpened() {
-        return checkoutButtonLocator.isDisplayed();
+        return driver.findElement(CHECKOUT_BUTTON_LOCATOR).isDisplayed();
     }
 
     public CheckoutStepOnePage checkoutButtonClick() {
-        checkoutButtonLocator.click();
+        logger.debug("Click to checkout button");
+        driver.findElement(CHECKOUT_BUTTON_LOCATOR).click();
         return new CheckoutStepOnePage(driver);
     }
 
@@ -47,6 +45,7 @@ public class CartPage extends BasePage {
     }
 
     public void removeButtonClick(String itemName) {
+        logger.debug(String.format("Click to remove button by name %s", itemName));
         driver.findElement(getRemoveButtonByItemName(itemName)).click();
     }
 

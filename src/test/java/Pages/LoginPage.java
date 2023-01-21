@@ -1,5 +1,6 @@
 package Pages;
 
+import Tests.AllureUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -35,18 +36,24 @@ public class LoginPage extends BasePage {
         return true;
     }
 
-    public ProductsPage clickLoginButton()  {
+    public ProductsPage clickLoginButton() {
+        logger.info("Click to login button");
         loginButton.click();
         return new ProductsPage(driver);
     }
 
-    public LoginPage setUsername(String username)   {
+    public LoginPage setUsername(String username) {
+        logger.debug(String.format("Entered username value %s ", username));
         driver.findElement(USERNAME_INPUT_LOCATOR).sendKeys(username);
+        AllureUtils.attachScreenshot(driver);
         return this;
     }
 
-    public LoginPage setPassword(String password)    {
+    @Step("Set password")
+    public LoginPage setPassword(String password) {
+        logger.debug(String.format("Entered password value %s ", password));
         passwordInput.sendKeys(password);
+        AllureUtils.attachScreenshot(driver);
         return this;
     }
 

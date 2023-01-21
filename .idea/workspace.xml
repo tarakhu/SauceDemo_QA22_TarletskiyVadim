@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84d5edfa-54e6-4f91-a351-05eb56054649" name="Changes" comment="новый саус демо">
+      <change afterPath="$PROJECT_DIR$/regressionTests.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/smokeTests.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/log4j2.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Pages/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/BasePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Pages/CartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/CartPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Pages/CheckoutCompletePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/CheckoutCompletePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Pages/CheckoutStepOnePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/CheckoutStepOnePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Pages/CheckoutStepTwoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/CheckoutStepTwoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Pages/ItemLargeSizePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/ItemLargeSizePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/LoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Pages/ProductsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/ProductsPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/allure.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/allure.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/BaseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,20 +53,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/firstProject/SauceDemo_QA22_TarletskiyVadim&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "D:/firstProject/SalesforceQA22_TarletskiyVadim",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\firstProject\SauceDemo_QA22_TarletskiyVadim\src\test\resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\firstProject\SauceDemo_QA22_TarletskiyVadim" />
       <recent name="D:\firstProject\SauceDemo_QA22_TarletskiyVadim\src\test\resources" />
     </key>
   </component>
@@ -229,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674070085187</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="новый саус демо">
+      <created>1674147588327</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674147588327</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
