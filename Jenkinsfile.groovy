@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-    triggers {
-        cron('30 21 24 1 *')
-    }
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
@@ -12,7 +9,7 @@ pipeline {
 
     parameters {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-        string(name: 'SUITE_NAME', defaultValue: 'smokeTest.xml')
+        string(name: 'SUITE_NAME', defaultValue: 'smokeTests.xml')
         choice(choices: ['Chrome', 'Edge', 'Yandex'], description: 'Select a browser', name: 'BROWSER')
         booleanParam (
                 defaultValue: false,
