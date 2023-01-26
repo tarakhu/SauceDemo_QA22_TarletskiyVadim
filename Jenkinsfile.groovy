@@ -16,7 +16,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 // On Windows should be %{params.BRANCH}%
-                git branch: "%{params.BRANCH}%", url: 'https://github.com/tarakhu/SauceDemo_QA22_TarletskiyVadim'
+                git branch: "%{params.BRANCH}", url: 'https://github.com/tarakhu/SauceDemo_QA22_TarletskiyVadim'
 
                 // Run Maven on an agent.
                 bat "mvn -Dmaven.test.failure.ignore=true clean test"
