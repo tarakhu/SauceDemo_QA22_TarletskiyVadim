@@ -29,7 +29,6 @@ pipeline {
                 }
             }
         }
-     stages {
             stage('Publish Allure Results') {
                 steps {
                     // Get some code from a GitHub repository
@@ -44,7 +43,6 @@ pipeline {
                     // bat "mvn -Dmaven.test.failure.ignore=true clean package"
                 }
              }
-         }
      }
             stage('Generate Allure report') {
                 steps {
