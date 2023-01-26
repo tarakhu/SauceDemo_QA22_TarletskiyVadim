@@ -1,21 +1,34 @@
 pipeline {
     agent any
 
+    triggers {
+        cron('30 21 24 1 *')
+    }
+
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M3"
+    }
+
+    parameters {
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+        string(name: 'SUITE_NAME', defaultValue: 'smokeTest.xml')
+        choice(choices: ['Chrome', 'Edge', 'Yandex'], description: 'Select a browser', name: 'BROWSER')
+        booleanParam (
+                defaultValue: false,
+                description: 'Headless',
+                name : 'HEADLESS')
     }
 
     stages {
         stage('Run Selenium Tests') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/tarakhu/SauceDemo_QA22_TarletskiyVadim'
+                // On Windows should be %{params.BRANCH}%
+                git branch: "${params.BRANCH}", url: 'https://github.com/tarakhu/SauceDemo_QA22_TarletskiyVadim'
 
-                // Run Maven on a Unix agent.
-                //sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-                bat "mvn -Dmaven.test.failure.ignore=true clean test"
+                // Run Maven on an agent.
+                sh "mvn -Dmaven.test.failure.ignore=true -DsuiteXmlFile=${params.SUITE_NAME} clean test"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
@@ -29,33 +42,18 @@ pipeline {
                 }
             }
         }
-            stage('Publish Allure Results') {
-                steps {
-                    // Get some code from a GitHub repository
-                    git 'https://github.com/tarakhu/SauceDemo_QA22_TarletskiyVadim'
-
-                    // Run Maven on a Unix agent.
-                    //sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-                    bat "mvn -Dmaven.test.failure.ignore=true clean test"
-
-                    // To run Maven on a Windows agent, use
-                    // bat "mvn -Dmaven.test.failure.ignore=true clean package"
-                }
-             }
-     }
-            stage('Generate Allure report') {
-                steps {
-                     script {
-                        allure([
-                         includeProperties: false,
-                         jdk: '',
-                         properties: [],
-                         reportBuildPolicy: 'ALWAYS',
-                         results: [[path: 'target/allure-results']]
-                         ])
-                    }
+        stage('Generate Allure report') {
+            steps {
+                script {
+                    allure([
+                            includeProperties: false,
+                            jdk              : '',
+                            properties       : [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results          : [[path: 'target/allure-results']]
+                    ])
                 }
             }
         }
-
+    }
+}
