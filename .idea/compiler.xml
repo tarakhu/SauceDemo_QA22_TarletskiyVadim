@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SauceDemo_QA22_TarletskiyVadim" />
-        <module name="SauceDemo" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SauceDemo_QA22_TarletskiyVadim" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
