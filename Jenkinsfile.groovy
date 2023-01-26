@@ -7,15 +7,6 @@ pipeline {
         maven "M3"
     }
 
-    parameters {
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-        string(name: 'SUITE_NAME', defaultValue: 'smokeTests.xml')
-        choice(choices: ['Chrome', 'Edge', 'Yandex'], description: 'Select a browser', name: 'BROWSER')
-        booleanParam (
-                defaultValue: false,
-                description: 'Headless',
-                name : 'HEADLESS')
-    }
 
     stages {
         stage('Run Selenium Tests') {
