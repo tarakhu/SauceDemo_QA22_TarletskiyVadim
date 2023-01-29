@@ -9,6 +9,7 @@ pipeline {
 
     parameters {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+        string(name: 'SUITE_NAME', defaultValue: 'smokeTests.xml')
     }
 
     stages {
@@ -19,7 +20,7 @@ pipeline {
                 git branch: "${params.BRANCH}", url: 'https://github.com/tarakhu/SauceDemo_QA22_TarletskiyVadim'
 
                 // Run Maven on an agent.
-                bat "mvn -Dmaven.test.failure.ignore=true clean test"
+                bat "mvn -Dmaven.test.failure.ignore=true -DsuitXmlFile=${params.SUITE_NAME} clean test"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
