@@ -3,8 +3,8 @@ pipeline {
 
     triggers {
         parameterizedCron(''' 
-            40 20 * * * $SUITE_NAME = smokeTests.xml
-            41 20 * * * $SUITE_NAME = regressionTests.xml
+            40 20 * * * %SUITE_NAME = smokeTests.xml
+            41 20 * * * %SUITE_NAME = regressionTests.xml
         ''')
     }
 
