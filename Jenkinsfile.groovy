@@ -2,7 +2,10 @@ pipeline {
     agent any
 
     triggers {
-        cron ('34 18 * * *')
+        parameterizedCron(''' 
+            40 20 * * * $SUITE_NAME = smokeTests.xml
+            41 20 * * * $SUITE_NAME = regression.xml
+        ''')
     }
 
     tools {
