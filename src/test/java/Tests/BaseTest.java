@@ -31,7 +31,7 @@ public abstract class BaseTest {
         String browserName = System.getProperty("browser", "Chrome");
         String headless = System.getProperty("headless", "false");
 
-        if (browserName.equals("chrome")) {
+        if (browserName.equals("Chrome")) {
             ChromeOptions options = new ChromeOptions();
             if (headless.equals("true")) {
                 options.addArguments("--headless");
