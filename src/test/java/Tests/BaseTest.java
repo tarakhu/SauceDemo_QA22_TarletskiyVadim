@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
@@ -26,13 +27,18 @@ public abstract class BaseTest {
     protected final Logger logger = LogManager.getLogger(this.getClass().getName());
 
     @BeforeClass(alwaysRun = true)
-    @Parameters({"browser"})
-    public void setUp(@Optional("chrome") String browser, ITestContext testContext) {
+    public void setUp(ITestContext testContext) {
+        String browserName = System.getProperty("browser", "Chrome");
+        String headless = System.getProperty("headless", "false");
 
-        if (browser.equals("chrome")) {
+        if (browserName.equals("chrome")) {
+            ChromeOptions options = new ChromeOptions();
+            if (headless.equals("true")) {
+                options.addArguments("--headless");
+            }
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-        } else {
+            driver = new ChromeDriver(options);
+        } else if(browserName.equals("Firefox")) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
         }

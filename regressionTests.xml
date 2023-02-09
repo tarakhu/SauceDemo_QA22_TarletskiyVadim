@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression Tests" parallel="tests" thread-count="2">
-    <test name="Smoke tests on chrome">
-        <parameter name="browser" value="chrome"></parameter>
-        <groups>
-            <run>
-                <include name="regression"/>
-                <exclude name=""></exclude>
-            </run>
-        </groups>
-        <packages>
-            <package name="Tests"></package>
-        </packages>
-    </test>
-
-    <test name="Regression tests on firefox">
-        <parameter name="browser" value="firefox"></parameter>
+    <test name="Regression tests">
         <groups>
             <run>
                 <include name="regression"/>
